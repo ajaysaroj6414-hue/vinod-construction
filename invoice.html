@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Invoice</title></head>
+<body>
+
+<h1>Invoice</h1>
+
+<input placeholder="Name">
+<input placeholder="Amount">
+
+<button onclick="gen()">Generate</button>
+
+<p id="r"></p>
+
+<script>
+function gen(){
+let n=document.querySelectorAll("input")[0].value;
+let a=document.querySelectorAll("input")[1].value;
+document.getElementById("r").innerHTML="Invoice: "+n+" ₹"+a;
+}
+</script>
+
+</body>
+</html>
