@@ -1,1 +1,116 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Vinod Construction</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {font-family:Arial;margin:0;background:#f4f4f4;}
+header {background:#0a192f;color:white;padding:20px;text-align:center;}
+section {padding:20px;text-align:center;}
+
+input,select,button {
+  padding:10px;
+  margin:8px;
+  width:90%;
+}
+
+button {
+  background:#e63946;
+  color:white;
+  border:none;
+}
+
+.chatbox {
+  position:fixed;
+  bottom:10px;
+  right:10px;
+  width:250px;
+  background:white;
+  padding:10px;
+  border-radius:10px;
+}
+</style>
+
+<script>
+function calculate() {
+  let service = document.getElementById("service").value;
+  let ac = document.getElementById("ac").value;
+  let qty = document.getElementById("qty").value;
+
+  let price = 0;
+
+  if(service=="AMC") {
+    if(ac=="compressor") price=1800;
+    else price=1200;
+  }
+  if(service=="Gas") price=2500;
+  if(service=="Repair") price=500;
+
+  let total = price * qty;
+  document.getElementById("result").innerHTML = "₹"+total;
+}
+
+function submitForm() {
+  window.open("https://wa.me/918208770831");
+}
+
+function chat() {
+  let input = document.getElementById("chatinput").value.toLowerCase();
+  let box = document.getElementById("chatmsg");
+
+  let reply = "Vinod Construction best service deta hai 👍 ";
+
+  if(input.includes("amc")) reply += "AMC ₹1800 / ₹1200 available hai";
+  else if(input.includes("gas")) reply += "Gas ₹2500 approx";
+  else reply += "Aap problem batao hum guide karenge";
+
+  box.innerHTML += "<br>You: "+input+"<br>AI: "+reply;
+}
+</script>
+
+</head>
+
+<body>
+
+<header>
+<h1>Vinod Construction and Supply</h1>
+<p>AC AMC & Repair Services</p>
+</header>
+
+<section>
+<h2>Get Quote</h2>
+
+<input placeholder="Name">
+<input placeholder="Phone">
+
+<select id="service">
+<option>AMC</option>
+<option>Repair</option>
+<option>Gas</option>
+</select>
+
+<select id="ac">
+<option value="compressor">Compressor</option>
+<option value="non">Non Compressor</option>
+</select>
+
+<input id="qty" placeholder="No. of AC">
+
+<button onclick="calculate()">Calculate</button>
+
+<div id="result"></div>
+
+<button onclick="submitForm()">Book on WhatsApp</button>
+
+</section>
+
+<div class="chatbox">
+<div id="chatmsg">AI: Hello 👋</div>
+<input id="chatinput">
+<button onclick="chat()">Send</button>
+</div>
+
+</body>
+</html>
